@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import axios from "axios";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import DisplayItem  from './DisplayItem';
+import Modal from './Modal';
+
+class App extends React.Component {
+  state = {images: []};
+
+  componentDidMount() {
+    axios.get(
+      "https://google-photos-album-demo2.glitch.me/4eXXxxG3rYwQVf948"
+    ).then(response => {
+      this.setState({
+        images: response.data
+      });
+    });
+  }
+
+  renderImages() {
+    return this.state.images.map((image) => {
+      return <DisplayItem item = {image} />
+    });
+  }
+
+  render() {
+    return (
+      <div className="ui divided items">
+        
+        {this.renderImages()}<Modal />
+      </div>
+    );
+  }
 }
 
 export default App;

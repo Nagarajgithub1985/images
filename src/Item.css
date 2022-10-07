@@ -1,0 +1,15 @@
+
+  
+  .column {
+    float: left;
+    width: 16.33%;
+    padding: 5px;
+    border-style: ridge;
+  }
+  
+  /* Clearfix (clear floats) */
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
