@@ -14,6 +14,7 @@ import Modal from '@mui/material/Modal';
 //import Modal from './Modal';
 
 import ShowProdImages from '../ShowProductImages';
+import { fontSize } from '@mui/system';
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -76,7 +77,17 @@ const CustomizedTables = (props) => {
                             {row.productName}
                         </StyledTableCell>
                         <StyledTableCell align="right">{row.productSerialNumber}</StyledTableCell>
-                        <StyledTableCell align="right">{row.itemStatus}</StyledTableCell>
+                        <StyledTableCell align="right">
+                            <span style={
+                                {
+                                    backgroundColor: row.itemStatus === "damaged" ? "red" : "green",
+                                    color: "white",
+                                    padding: "10px",
+                                    fontSize: "16px"
+                                }}>
+                                {row.itemStatus}
+                            </span>
+                        </StyledTableCell>
                         <StyledTableCell align="right">
                             <Button variant="contained"  onClick={() => handleOpen(row)}>View Images</Button>
                         </StyledTableCell>

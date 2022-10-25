@@ -12,7 +12,7 @@ const ShowProdImages = (props) => {
                 return (
                     <div>
                         <img src={`../../images/images/${imagePath.trim()}`} />
-                        <div className="legend" style={{marginTop: "200px"}}>
+                        {/* <div className="legend" style={{marginTop: "200px"}}>
                             <div>Product Name: {product.productName}</div>
                             <div>Product Serial Number: {product.productSerialNumber}</div>
                             <div>Item Status: &nbsp;
@@ -20,7 +20,7 @@ const ShowProdImages = (props) => {
                                     {product.itemStatus}
                                 </span>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 );
             })}
