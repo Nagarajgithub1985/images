@@ -38,12 +38,12 @@ const displayItem = (props) => {
 
     return (
         <React.Fragment>
-          <div style={{marginBottom: '5px;'}}></div>
-        <div style={{textAlign: 'center'}}>
-            <div style={{disply: 'inline-block'}}>{renderIamges()}</div>
-            <div style={{disply: 'inline-block'}}><ItemInfo itemInfo={props.imageProps} /></div>
-            <div style={{marginTop: '5px;'}}>&nbsp;</div>
-        </div>
+            <div style={{marginBottom: '5px;'}}></div>
+            <div style={{textAlign: 'center'}}>
+                <div style={{disply: 'inline-block'}}>{renderIamges()}</div>
+                <div style={{disply: 'inline-block'}}><ItemInfo itemInfo={props.imageProps} /></div>
+                <div style={{marginTop: '5px;'}}>&nbsp;</div>
+            </div>
         </React.Fragment>
         // <div className="item">
         //     <div className="item">
