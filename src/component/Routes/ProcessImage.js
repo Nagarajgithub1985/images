@@ -1,54 +1,28 @@
 import React from "react";
 import axios from "axios"
-
-import { Carousel } from 'react-responsive-carousel';
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import ReactModal from 'react-modal';
 
 import Container from '../Container';
 import CircularProgressShow from '../../CircularProgressShow';
+import MUITable from '../mui/Table';
 import "../css/carousel.css";
 
 class ProcessImage extends React.Component {
     state = {
-        recentProcessedProduct: {}
+        recentProcessedProduct: []
     };
 
-    componentDidMount = (str) => {
+    componentDidMount = () => {
         axios.get("http://127.0.0.1:8000/process")
             .then((response) => {
                 this.setState({
-                    recentProcessedProduct: response.data
+                    recentProcessedProduct: [response.data]
                 });
             });
     }
 
     renderImages = () => {
-        let product = this.state.recentProcessedProduct;
-        let imagesArr = product.productImagesPath.split(",");
-        return (
-            <Carousel autoPlay="true" infiniteLoop="true" interval="3000">
-                {imagesArr.map((imagePath) => {
-                    let status = product.itemStatus;
-                    let bgColor = status === "damaged" ? "red" : "green";
-                    return (
-                        <div>
-                            <img src={`../../images/images/${imagePath.trim()}`} />
-                            <div className="legend" style={{marginTop: "200px"}}>
-                                <div>Product Name: {product.productName}</div>
-                                <div>Product Serial Number: {product.productSerialNumber}</div>
-                                <div>Item Status: &nbsp;
-                                    <span  style={{backgroundColor: bgColor}}>
-                                        {product.itemStatus}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    );
-                })}
-            </Carousel>
-        );
+        return <MUITable data={this.state.recentProcessedProduct} />;
     }
 
     render() {

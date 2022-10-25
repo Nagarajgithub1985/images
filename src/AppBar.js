@@ -27,8 +27,8 @@ const ApplicationBar = (props) => {
                         BlueYonder
                     </Typography>
                     <MenuPopupState />
-                    <Button color="inherit" onClick={props.handleProcessClick}>Process</Button>
-                    <Button color="inherit">Login</Button>
+                    {/* <Button color="inherit" onClick={props.handleProcessClick}>Process</Button>
+                    <Button color="inherit">Login</Button> */}
                 </Toolbar>
             </AppBar>
         </Box>
