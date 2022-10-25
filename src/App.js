@@ -1,13 +1,15 @@
 import React from 'react';
 import axios from "axios"
+import { Router, Route } from 'react-router-dom';
 
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
-
 import DisplayItems from './DisplayItems';
 import ApplicationBar from './AppBar';
 import CircularProgressShow from './CircularProgressShow';
+import ProcessImage from './component/Routes/ProcessImage';
+import history from './component/History';
 
 class App extends React.Component {
   state = {images: [], qual_imgs: [], processBtnClicked: false};
@@ -33,11 +35,18 @@ class App extends React.Component {
   render() {
      return (
        <div className="">
-         <ApplicationBar handleProcessClick={this.onProcessClick} />
-         <div style={{marginTop: '9000px;'}}>&nbsp;</div>
-         <div style={{marginBottom: '9000px;'}}>&nbsp;</div>
-         {this.state.qual_imgs.length > 0 ? this.renderImages() :
-            (this.state.processBtnClicked ? <CircularProgressShow /> : null)}
+          <Router history={history}>
+            <div>
+              <ApplicationBar handleProcessClick={this.onProcessClick} />
+              <Route path="/" />
+              <Route path="/process" component={ProcessImage} />
+            </div>
+            
+            {/* <div style={{marginTop: '9000px;'}}>&nbsp;</div>
+            <div style={{marginBottom: '9000px;'}}>&nbsp;</div> */}
+            {this.state.qual_imgs.length > 0 ? this.renderImages() :
+                (this.state.processBtnClicked ? <CircularProgressShow /> : null)}
+          </Router>
        </div>
      );
   }

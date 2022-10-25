@@ -7,10 +7,12 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
+import MenuPopupState from './component/Menu';
+
 const ApplicationBar = (props) => {
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="fixed">
+            <AppBar position="static">
                 <Toolbar>
                     <IconButton
                         size="large"
@@ -24,6 +26,7 @@ const ApplicationBar = (props) => {
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         BlueYonder
                     </Typography>
+                    <MenuPopupState />
                     <Button color="inherit" onClick={props.handleProcessClick}>Process</Button>
                     <Button color="inherit">Login</Button>
                 </Toolbar>
