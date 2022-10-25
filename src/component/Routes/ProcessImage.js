@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios"
 
 import { Carousel } from 'react-responsive-carousel';
 import Slider from "react-slick";
@@ -10,39 +11,36 @@ import CircularProgressShow from '../../CircularProgressShow';
 import "../css/carousel.css";
 
 class ProcessImage extends React.Component {
-    state = {processeImages: false};
+    state = {
+        recentProcessedProduct: {}
+    };
 
     componentDidMount = (str) => {
-        setTimeout(() => {
-            this.setState({processeImages: true});
-        }, 5000, "tested");
-        
+        axios.get("http://127.0.0.1:8000/process")
+            .then((response) => {
+                this.setState({
+                    recentProcessedProduct: response.data
+                });
+            });
     }
 
     renderImages = () => {
-        const response = {
-            "id":1,
-            "productName":"Apple",
-            "productSerialNumber":26475,
-            "productImagesPath":"Apple 26475\\badquality2011.jpg, Apple 26475\\badquality2127.jpg, Apple 26475\\badquality2244.jpg, Apple 26475\\badquality2268.jpg, Apple 26475\\badquality2302.jpg, Apple 26475\\badquality2340.jpg",
-            "itemStatus":"damaged"
-        }
-
-        let imagesArr = response.productImagesPath.split(",");
+        let product = this.state.recentProcessedProduct;
+        let imagesArr = product.productImagesPath.split(",");
         return (
             <Carousel autoPlay="true" infiniteLoop="true" interval="3000">
                 {imagesArr.map((imagePath) => {
-                    let status = response.itemStatus;
+                    let status = product.itemStatus;
                     let bgColor = status === "damaged" ? "red" : "green";
                     return (
                         <div>
                             <img src={`../../images/images/${imagePath.trim()}`} />
                             <div className="legend" style={{marginTop: "200px"}}>
-                                <div>Product Name: {response.productName}</div>
-                                <div>Product Serial Number: {response.productSerialNumber}</div>
+                                <div>Product Name: {product.productName}</div>
+                                <div>Product Serial Number: {product.productSerialNumber}</div>
                                 <div>Item Status: &nbsp;
                                     <span  style={{backgroundColor: bgColor}}>
-                                        {response.itemStatus}
+                                        {product.itemStatus}
                                     </span>
                                 </div>
                             </div>
@@ -56,12 +54,12 @@ class ProcessImage extends React.Component {
     render() {
         return (
             <div>
-                {!this.state.processeImages ? <CircularProgressShow />: this.renderImages()}
+                {Object.keys(this.state.recentProcessedProduct).length > 0 ? this.renderImages()
+                    : <CircularProgressShow /> }
                 {/* <Container /> */}
             </div>
         )
     }
-    
 }
 
 export default ProcessImage;
