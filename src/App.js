@@ -12,6 +12,7 @@ import ProcessImage from './component/Routes/ProcessImage';
 import ProductHistory from './component/Routes/ProductsHistory';
 import TrainedImages from './component/Routes/TrainedImages';
 import history from './component/History';
+import Home from './component/Home';
 
 class App extends React.Component {
   state = {images: [], qual_imgs: [], processBtnClicked: false};
@@ -40,10 +41,11 @@ class App extends React.Component {
           <Router history={history}>
             <div>
               <ApplicationBar handleProcessClick={this.onProcessClick} />
-              <Route path="/" exact />
-              <Route path="/process" component={ProcessImage} />
-              <Route path="/history" component={ProductHistory} />
-              <Route path="/trained_images" component={TrainedImages} />
+              <Route path="/" exact component={Home} />
+              <Route path="/process" exact component={ProcessImage} />
+              <Route path="/history" exact component={ProductHistory} />
+              <Route path="/trained_images" exact component={TrainedImages} />
+              <Route path="/home" exact component={Home} />
             </div>
             
             {/* <div style={{marginTop: '9000px;'}}>&nbsp;</div>

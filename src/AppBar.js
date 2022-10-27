@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from '@mui/material';
+
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -24,7 +26,11 @@ const ApplicationBar = (props) => {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        BlueYonder
+                        <Link href="/">
+                            <span style={{color: 'white'}}>
+                                BlueYonder
+                            </span>
+                        </Link>
                     </Typography>
                     <MenuPopupState />
                     {/* <Button color="inherit" onClick={props.handleProcessClick}>Process</Button>
