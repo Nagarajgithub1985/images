@@ -66,8 +66,8 @@ const CustomizedTables = (props) => {
                     <TableRow>
                         <StyledTableCell>Product Name</StyledTableCell>
                         <StyledTableCell align="center">Product Serial Number</StyledTableCell>
-                        <StyledTableCell align="right">Item Status</StyledTableCell>
-                        <StyledTableCell align="right">View</StyledTableCell>
+                        <StyledTableCell align="center">Item Status</StyledTableCell>
+                        <StyledTableCell align="center">View</StyledTableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -77,7 +77,7 @@ const CustomizedTables = (props) => {
                             {row.productName}
                         </StyledTableCell>
                         <StyledTableCell align="center">{row.productSerialNumber}</StyledTableCell>
-                        <StyledTableCell align="right">
+                        <StyledTableCell align="center">
                             <span style={
                                 {
                                     backgroundColor: row.itemStatus === "damaged" ? "red" : "green",
@@ -88,7 +88,7 @@ const CustomizedTables = (props) => {
                                 {row.itemStatus}
                             </span>
                         </StyledTableCell>
-                        <StyledTableCell align="right">
+                        <StyledTableCell align="center">
                             <Button variant="contained"  onClick={() => handleOpen(row)}>View Images</Button>
                         </StyledTableCell>
                         </StyledTableRow>

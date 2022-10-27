@@ -22,6 +22,7 @@ export default function MenuPopupState() {
           <Menu {...bindMenu(popupState)}>
             <MenuItem onClick={() => MenuClick(popupState, '/process')}>Process Image</MenuItem>
             <MenuItem onClick={() => MenuClick(popupState, '/history')}>History</MenuItem>
+            <MenuItem onClick={() => MenuClick(popupState, '/trained_images')}>Trained Images</MenuItem>
           </Menu>
         </React.Fragment>
       )}

@@ -10,6 +10,7 @@ import ApplicationBar from './AppBar';
 import CircularProgressShow from './CircularProgressShow';
 import ProcessImage from './component/Routes/ProcessImage';
 import ProductHistory from './component/Routes/ProductsHistory';
+import TrainedImages from './component/Routes/TrainedImages';
 import history from './component/History';
 
 class App extends React.Component {
@@ -39,9 +40,10 @@ class App extends React.Component {
           <Router history={history}>
             <div>
               <ApplicationBar handleProcessClick={this.onProcessClick} />
-              <Route path="/" />
+              <Route path="/" exact />
               <Route path="/process" component={ProcessImage} />
               <Route path="/history" component={ProductHistory} />
+              <Route path="/trained_images" component={TrainedImages} />
             </div>
             
             {/* <div style={{marginTop: '9000px;'}}>&nbsp;</div>
