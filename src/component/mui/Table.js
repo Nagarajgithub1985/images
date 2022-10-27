@@ -65,7 +65,7 @@ const CustomizedTables = (props) => {
                 <TableHead>
                     <TableRow>
                         <StyledTableCell>Product Name</StyledTableCell>
-                        <StyledTableCell align="right">Product Serial Number</StyledTableCell>
+                        <StyledTableCell align="center">Product Serial Number</StyledTableCell>
                         <StyledTableCell align="right">Item Status</StyledTableCell>
                         <StyledTableCell align="right">View</StyledTableCell>
                     </TableRow>
@@ -76,7 +76,7 @@ const CustomizedTables = (props) => {
                         <StyledTableCell component="th" scope="row">
                             {row.productName}
                         </StyledTableCell>
-                        <StyledTableCell align="right">{row.productSerialNumber}</StyledTableCell>
+                        <StyledTableCell align="center">{row.productSerialNumber}</StyledTableCell>
                         <StyledTableCell align="right">
                             <span style={
                                 {

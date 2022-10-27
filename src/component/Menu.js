@@ -7,9 +7,9 @@ import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import history from './History';
 
 export default function MenuPopupState() {
-  const MenuClick = (popupState) => {
+  const MenuClick = (popupState, path) => {
     popupState.close();
-    history.push('/process');
+    history.push(path);
   }
 
   return (
@@ -20,9 +20,8 @@ export default function MenuPopupState() {
             Dashboard
           </Button>
           <Menu {...bindMenu(popupState)}>
-            <MenuItem onClick={() => MenuClick(popupState)}>Process Image</MenuItem>
-            <MenuItem onClick={popupState.close}>My account</MenuItem>
-            <MenuItem onClick={popupState.close}>Logout</MenuItem>
+            <MenuItem onClick={() => MenuClick(popupState, '/process')}>Process Image</MenuItem>
+            <MenuItem onClick={() => MenuClick(popupState, '/history')}>History</MenuItem>
           </Menu>
         </React.Fragment>
       )}
