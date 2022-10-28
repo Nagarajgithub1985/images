@@ -13,7 +13,7 @@ import ProductHistory from './component/Routes/ProductsHistory';
 import TrainedImages from './component/Routes/TrainedImages';
 import history from './component/History';
 import Home from './component/Home';
-import MUIAppBar from './component/MUIAppBar.tsx';
+import MUIAppBar from './component/MUIAppBar.js';
 
 class App extends React.Component {
   state = {images: [], qual_imgs: [], drawerBtnClicked: false};
