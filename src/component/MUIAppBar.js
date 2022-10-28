@@ -110,10 +110,12 @@ export default function PersistentDrawerLeft(props) {
       <Drawer
         sx={{
           width: drawerWidth,
+          
           flexShrink: 1,
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
+            backgroundColor: "#1976d2"
           },
         }}
         variant="persistent"
@@ -121,7 +123,7 @@ export default function PersistentDrawerLeft(props) {
         open={open}
       >
         <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton style={{backgroundColor: "#ffffff"}} onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </DrawerHeader>
@@ -129,22 +131,22 @@ export default function PersistentDrawerLeft(props) {
         <List>
             <ListItem key="process" disablePadding>
               <ListItemButton>
-                <ListItemText primary="Process" onClick={() => {history.push('/process')}} />
+                <ListItemText style={{color: 'white'}} primary="Process" onClick={() => {history.push('/process')}} />
               </ListItemButton>
             </ListItem>
             <ListItem key="history" disablePadding>
               <ListItemButton>
-                <ListItemText primary="History" onClick={() => {history.push('/history')}} />
+                <ListItemText style={{color: 'white'}} primary="History" onClick={() => {history.push('/history')}} />
               </ListItemButton>
             </ListItem>
             <ListItem key="trained_data" disablePadding>
               <ListItemButton>
-                <ListItemText primary="Trained Data" onClick={() => {history.push('/trained_images')}} />
+                <ListItemText style={{color: 'white'}} primary="Trained Data" onClick={() => {history.push('/trained_images')}} />
               </ListItemButton>
             </ListItem>
             <ListItem key="new" disablePadding>
               <ListItemButton>
-                <ListItemText primary="NEW" onClick={() => {history.push('/')}} />
+                <ListItemText style={{color: 'white'}} primary="NEW" onClick={() => {history.push('/')}} />
               </ListItemButton>
             </ListItem>
         </List>

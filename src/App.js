@@ -16,7 +16,7 @@ import Home from './component/Home';
 import MUIAppBar from './component/MUIAppBar.js';
 
 class App extends React.Component {
-  state = {images: [], qual_imgs: [], drawerBtnClicked: false};
+  state = {images: [], qual_imgs: [], drawerBtnClicked: true};
 
   onProcessClick = () => {
     this.setState({
@@ -51,8 +51,9 @@ class App extends React.Component {
     else {
       contentStyle.marginLeft = 0;
     }
-
+    console.log(contentStyle);
      return (
+      
        <div style={contentStyle}>
           <Router history={history}>
             <div>
