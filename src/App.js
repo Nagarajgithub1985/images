@@ -13,9 +13,10 @@ import ProductHistory from './component/Routes/ProductsHistory';
 import TrainedImages from './component/Routes/TrainedImages';
 import history from './component/History';
 import Home from './component/Home';
+import MUIAppBar from './component/MUIAppBar.tsx';
 
 class App extends React.Component {
-  state = {images: [], qual_imgs: [], processBtnClicked: false};
+  state = {images: [], qual_imgs: [], drawerBtnClicked: false};
 
   onProcessClick = () => {
     this.setState({
@@ -35,12 +36,28 @@ class App extends React.Component {
       return <DisplayItems items = {this.state.qual_imgs} />
   }
 
+  handleDrawerClick = (sts) => {
+    this.setState({
+      drawerBtnClicked: sts
+    });
+  }
+
   render() {
+    const contentStyle = {  transition: 'margin-left 450ms cubic-bezier(0.23, 1, 0.32, 1)' };
+
+    if (this.state.drawerBtnClicked) {
+      contentStyle.marginLeft = 140;
+    }
+    else {
+      contentStyle.marginLeft = 0;
+    }
+
      return (
-       <div className="">
+       <div style={contentStyle}>
           <Router history={history}>
             <div>
-              <ApplicationBar handleProcessClick={this.onProcessClick} />
+              {/* <ApplicationBar handleProcessClick={this.onProcessClick} /> */}
+              <MUIAppBar handleDrawerClick={this.handleDrawerClick} />
               <Route path="/" exact component={Home} />
               <Route path="/process" exact component={ProcessImage} />
               <Route path="/history" exact component={ProductHistory} />

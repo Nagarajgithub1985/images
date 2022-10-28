@@ -19,6 +19,7 @@ class ProductHistory extends React.Component {
     }
 
     render() {
+        
         return (
             <div>
                 {Object.keys(this.state.recentProcessedProduct).length > 0 ? this.renderImages()
