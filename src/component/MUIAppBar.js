@@ -146,7 +146,7 @@ export default function PersistentDrawerLeft(props) {
             </ListItem>
             <ListItem key="new" disablePadding>
               <ListItemButton>
-                <ListItemText style={{color: 'white'}} primary="NEW" onClick={() => {history.push('/')}} />
+                <ListItemText style={{color: 'white'}} primary="Add Product" onClick={() => {history.push('/add_new_product')}} />
               </ListItemButton>
             </ListItem>
         </List>

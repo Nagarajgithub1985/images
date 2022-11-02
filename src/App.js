@@ -11,6 +11,7 @@ import CircularProgressShow from './CircularProgressShow';
 import ProcessImage from './component/Routes/ProcessImage';
 import ProductHistory from './component/Routes/ProductsHistory';
 import TrainedImages from './component/Routes/TrainedImages';
+import AddProduct from './component/Routes/AddNewProduct';
 import history from './component/History';
 import Home from './component/Home';
 import MUIAppBar from './component/MUIAppBar.js';
@@ -51,7 +52,6 @@ class App extends React.Component {
     else {
       contentStyle.marginLeft = 0;
     }
-    console.log(contentStyle);
      return (
       
        <div style={contentStyle}>
@@ -64,6 +64,7 @@ class App extends React.Component {
               <Route path="/history" exact component={ProductHistory} />
               <Route path="/trained_images" exact component={TrainedImages} />
               <Route path="/home" exact component={Home} />
+              <Route path="/add_new_product" exact component={AddProduct} />
             </div>
             
             {/* <div style={{marginTop: '9000px;'}}>&nbsp;</div>

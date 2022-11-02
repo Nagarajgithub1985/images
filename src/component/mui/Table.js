@@ -71,26 +71,28 @@ const CustomizedTables = (props) => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {props.data.map((row) => (
-                        <StyledTableRow key={row.name}>
-                        <StyledTableCell component="th" scope="row">
-                            {row.productName}
-                        </StyledTableCell>
-                        <StyledTableCell align="center">{row.productSerialNumber}</StyledTableCell>
-                        <StyledTableCell align="center">
-                            <span style={
-                                {
-                                    backgroundColor: row.itemStatus === "damaged" ? "red" : "green",
-                                    color: "white",
-                                    padding: "10px",
-                                    fontSize: "16px"
-                                }}>
-                                {row.itemStatus}
-                            </span>
-                        </StyledTableCell>
-                        <StyledTableCell align="center">
-                            <Button variant="contained"  onClick={() => handleOpen(row)}>View Images</Button>
-                        </StyledTableCell>
+                    {props.data.map((row, idx) => (
+                        <StyledTableRow key={row.name} selected={true} 
+                                        // style={idx === 0 ? {backgroundColor: "red"}: {}}
+                        >
+                          <StyledTableCell component="th" scope="row">
+                              {row.productName}
+                          </StyledTableCell>
+                          <StyledTableCell align="center">{row.productSerialNumber}</StyledTableCell>
+                          <StyledTableCell align="center">
+                              <span style={
+                                  {
+                                      backgroundColor: row.itemStatus === "damaged" ? "red" : "green",
+                                      color: "white",
+                                      padding: "10px",
+                                      fontSize: "16px"
+                                  }}>
+                                  {row.itemStatus}
+                              </span>
+                          </StyledTableCell>
+                          <StyledTableCell align="center">
+                              <Button variant="contained"  onClick={() => handleOpen(row)}>View Images</Button>
+                          </StyledTableCell>
                         </StyledTableRow>
                     ))}
                 </TableBody>
