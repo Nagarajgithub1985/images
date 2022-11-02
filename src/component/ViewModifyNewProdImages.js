@@ -45,15 +45,15 @@ const ViewModifyProdImages = (props) => {
             setRows((r) => r.filter((x) => !selectedIDs.has(x.id)));
     }
 
-    const SaveImages = () => {
-        const formData = new FormData();
-        for (let i = 0 ; i < rows.length ; i++) {
-            formData.append("files", rows[i].image);
-        }
-        axios.post('http://127.0.0.1:8000/uploadfiles', formData)
-        .then(response => console.log(response));
+    const saveImages = () => {
+        // const formData = new FormData();
+        // for (let i = 0 ; i < rows.length ; i++) {
+        //     formData.append("files", rows[i].image);
+        // }
+        // axios.post('http://127.0.0.1:8000/uploadfiles', formData)
+        //     .then(response => console.log(response));
 
-        props.closeModalOnSave();
+        props.closeModalOnSave(rows);
     }
 
     const onFileSelect = (e) => {
@@ -86,8 +86,8 @@ const ViewModifyProdImages = (props) => {
                     Upload More
                     </Button>
                 </label>&nbsp;
-                <Button variant="contained" component="label" onClick={SaveImages}>
-                    Save
+                <Button variant="contained" component="label" onClick={saveImages}>
+                    Done
                 </Button>
             </div>
             &nbsp;

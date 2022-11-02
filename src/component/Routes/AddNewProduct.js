@@ -36,9 +36,11 @@ class AddProduct extends React.Component {
         })
     }
 
-    handleModalInViewModifyPage = () => {
+    handleModalInViewModifyPage = (rows) => {
+        console.log(rows)
         this.setState({
-            openModal: false
+            openModal: false,
+            selectedImages: rows
         });
     }
 
