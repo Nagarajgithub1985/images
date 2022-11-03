@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import TextField from '@mui/material/TextField';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
@@ -22,7 +23,11 @@ const modalStyle = {
   };
 
 class AddProduct extends React.Component {
-    state = {selectedImages: [], openModal: false};
+    state = {
+        selectedImages: [], 
+        openModal: false,
+        productName: ''
+    };
 
     onFileSelect = (e) => {
         const rows = Object.values(e.target.files).map((imageFile, idx) => {
@@ -50,6 +55,28 @@ class AddProduct extends React.Component {
         });
     }
 
+    submitFormData = () => {
+        const formData = new FormData();
+        for (let i = 0 ; i < this.state.selectedImages.length ; i++) {
+            formData.append("files", this.state.selectedImages[i].image);
+        }
+        formData.append("product_name", this.state.productName);
+
+        axios.post('http://127.0.0.1:8000/uploadfiles', formData)
+            .then(response => {
+                this.setState({
+                    selectedImages: [],
+                    productName: ''
+                })
+            });
+    }
+
+    onProductNameChange = (e) => {
+        this.setState({
+            productName: e.target.value
+        })
+    }
+
     render() {
         return (
             <div style={{
@@ -72,11 +99,13 @@ class AddProduct extends React.Component {
                             width: "50%",
                             marginRight: "70px"                                    
                         }}
+                        name='product_name'
+                        onChange={this.onProductNameChange}
+                        value={this.state.productName}
                         label="Add Product" id="fullWidth" />
                     
                     <input
                         accept="image/*"
-                        // className={classes.input}
                         style={{ display: 'none' }}
                         id="raised-button-file"
                         multiple
@@ -100,7 +129,7 @@ class AddProduct extends React.Component {
                     
                     
                     <div style={{marginTop: "40px"}}>
-                        <Button variant="contained" color="primary" type="submit">
+                        <Button variant="contained" color="primary" onClick={this.submitFormData}>
                             Submit
                         </Button>
                     </div>
