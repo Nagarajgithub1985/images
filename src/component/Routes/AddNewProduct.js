@@ -7,6 +7,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Modal from '@mui/material/Modal';
+import CircularProgressShow from '../../CircularProgressShow';
 
 import ViewModifyProdImages from '../ViewModifyNewProdImages';
 
@@ -21,13 +22,22 @@ const modalStyle = {
     boxShadow: 24,
     p: 4,
   };
+  
+const processModalStyle = {
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "0px"
+};
 
 class AddProduct extends React.Component {
     state = {
         selectedImages: [], 
         openModal: false,
-        productName: ''
+        productName: '',
+        processSubmit: false
     };
+
+    
 
     onFileSelect = (e) => {
         const rows = Object.values(e.target.files).map((imageFile, idx) => {
@@ -62,11 +72,13 @@ class AddProduct extends React.Component {
         }
         formData.append("product_name", this.state.productName);
 
+        this.setState({processSubmit: true});
         axios.post('http://127.0.0.1:8000/uploadfiles', formData)
             .then(response => {
                 this.setState({
                     selectedImages: [],
-                    productName: ''
+                    productName: '',
+                    processSubmit: false
                 })
             });
     }
@@ -88,11 +100,6 @@ class AddProduct extends React.Component {
                     border: "1px solid #e0e0e0"
                 }}
             >
-                {/* {this.state.selectedImage && (
-                    <div>
-                        <img src={URL.createObjectURL(this.state.selectedImage)} />
-                    </div>
-                )} */}
                 <form>
                     <TextField style={{
                             backgroundColor: 'white',
@@ -148,6 +155,12 @@ class AddProduct extends React.Component {
                         />
                     </Box>
                 </Modal>
+                {this.state.processSubmit && 
+                        <CircularProgressShow 
+                            processModalStyle = {processModalStyle}
+                            text="Uploading images. Please wait..."
+                        /> 
+                }                
             </div>
         );
     }

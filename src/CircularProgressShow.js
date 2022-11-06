@@ -6,18 +6,14 @@ import Typography from '@mui/material/Typography';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
-export default function CircularIndeterminate() {
+export default function CircularIndeterminate(props) {
   return (
-    <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          marginTop: "200px"
-        }}
-      >
+    <div style={props.processModalStyle}>
         <Box sx={{ display: 'flex' }}>
           <CircularProgress />
-          <Typography style={{marginTop: "40px"}} position='absolute'>Processing....</Typography>
+          <Typography style={{marginTop: "40px"}} position='absolute'>
+            <b>{props.text}</b>
+          </Typography>
           {/* <CircularProgressbar value="55" text="processing" />; */}
         </Box>
     </div>

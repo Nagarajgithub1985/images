@@ -24,6 +24,12 @@ const modalStyle = {
     p: 4,
   };
 
+const Style = {
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "200px"
+};
+
 class ProcessImage extends React.Component {
     state = {
         recentProcessedProduct: [],
@@ -71,7 +77,7 @@ class ProcessImage extends React.Component {
                 {/* <Container /> */}
 
                 {Object.keys(this.state.recentProcessedProduct).length > 0 ? this.renderImages()
-                    : <CircularProgressShow /> }
+                    : <CircularProgressShow processModalStyle={Style} text="Processing..." /> }
             </div>
         )
     }
