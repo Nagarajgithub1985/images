@@ -101,8 +101,8 @@ const ViewModifyProdImages = (props) => {
                 checkboxSelection
                 onSelectionModelChange={(newSelectionModel) => {
                     setSelectionModel(newSelectionModel);
-                  }}
-                  selectionModel={selectionModel}
+                }}
+                selectionModel={selectionModel}
                 //onSelectionModelChange={(ids) => {onSelectedRows(ids)}}
             />
         </div>

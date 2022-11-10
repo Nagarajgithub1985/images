@@ -7,8 +7,13 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Modal from '@mui/material/Modal';
-import CircularProgressShow from '../../CircularProgressShow';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
+import CircularProgressShow from '../../CircularProgressShow';
 import ViewModifyProdImages from '../ViewModifyNewProdImages';
 
 const modalStyle = {
@@ -34,7 +39,8 @@ class AddProduct extends React.Component {
         selectedImages: [], 
         openModal: false,
         productName: '',
-        processSubmit: false
+        processSubmit: false,
+        openDialog: false
     };
 
     
@@ -73,13 +79,25 @@ class AddProduct extends React.Component {
         formData.append("product_name", this.state.productName);
 
         this.setState({processSubmit: true});
+
+        // JUST FOR DEMO PURPOSE.
+        setTimeout(() => {
+            this.setState({
+                selectedImages: [],
+                productName: '',
+                processSubmit: false,
+                openDialog: true
+            })
+            //alert("Images uploaded successfully");            
+        }, 2000);
+
         axios.post('http://127.0.0.1:8000/uploadfiles', formData)
             .then(response => {
-                this.setState({
-                    selectedImages: [],
-                    productName: '',
-                    processSubmit: false
-                })
+                // this.setState({
+                //     selectedImages: [],
+                //     productName: '',
+                //     processSubmit: false
+                // })
             });
     }
 
@@ -155,6 +173,26 @@ class AddProduct extends React.Component {
                         />
                     </Box>
                 </Modal>
+
+                <Dialog
+                    open={this.state.openDialog}
+                    onClose={() => {this.setState({openDialog: false})}}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <DialogTitle id="alert-dialog-title">
+                    {"SUCCESS"}
+                    </DialogTitle>
+                    <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        All the images have been uploaded successfully.
+                    </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                    <Button onClick={() => {this.setState({openDialog: false})}}>Close</Button>
+                    </DialogActions>
+                </Dialog>
+
                 {this.state.processSubmit && 
                         <CircularProgressShow 
                             processModalStyle = {processModalStyle}
